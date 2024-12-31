@@ -1,0 +1,159 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+ 
+    justify-content: center;
+    align-items: center;
+    background-image: url('signup.jpg');
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+nav ul {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+    position: relative;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+nav ul li a:hover {
+    color: #f0a500;
+}
+
+/* Dropdown Styles */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #444;
+    min-width: 150px;
+    top: 30px;
+    z-index: 1000;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: white;
+}
+
+.dropdown-menu a:hover {
+    background-color: #555;
+}
+
+nav ul li:hover .dropdown-menu {
+    display: block;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav ul li {
+        margin: 5px 0;
+    }
+}
+
+.container {
+   background-color: #FAFFC5;
+    width: fit-content;
+    height: fit-content;
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-sizing: border-box;
+}
+.container
+{
+    position: relative;
+    margin-top: 2rem;
+    z-index: 1;
+}
+
+  
+  input[type="text"], 
+  input[type="email"], 
+  select, 
+  input[type="file"] {
+    width: 100%;  /* Make inputs stretch to fit the container width */
+    padding: 8px;  /* Add padding for better spacing */
+    margin-bottom: 12px;  /* Space between input fields */
+    border: 1px solid #ccc;  /* Add border to inputs */
+    border-radius: 5px;  /* Slight rounded corners for inputs */
+    box-sizing: border-box;  /* Ensure padding doesn't affect total width */
+  }
+  
+  input[type="checkbox"] {
+    width: auto;
+    margin-right: 8px;  /* Space between checkbox and label */
+  }
+  
+  input[type="file"] {
+    padding: 0;  /* Remove extra padding for file input */
+    border: 1px solid #ccc;
+  }
+  
+  select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  label[for="language"] {
+    font-weight: bold;
+    margin-bottom: 8px;
+    display: block;
+  }
+  
+  .language-option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;  /* Space between each checkbox */
+  }
+  
+  .language-option input[type="checkbox"] {
+    margin-right: 10px;  /* Space between checkbox and label */
+  }
+  
+  .language-option label {
+    margin: 0;  /* Remove default margin from label */
+    font-size: 16px;  /* Adjust font size for labels */
+  }
+  
+  .btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
