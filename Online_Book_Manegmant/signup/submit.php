@@ -6,11 +6,20 @@ include 'conection.php';
 $firstname = htmlspecialchars($_POST['firstname']);
 $lastname = htmlspecialchars($_POST['lastname']);
 $gender = htmlspecialchars($_POST['gender']);
-$language = htmlspecialchars(implode(", ", $_POST['language'])); // Convert array to a comma-separated string
+// Check if $_SESSION['language'] is an array
+
+// If it's not an array, treat it as a single value (string)
+if (is_array($_SESSION['language'])) {
+    $language = implode(", ", $_SESSION['language']);
+} else {
+    // If it's not an array, treat it as a single value (string)
+    $language = $_SESSION['language'];
+}
+// Convert array to a comma-separated string
 $email = htmlspecialchars($_POST['email']);
 $password = password_hash($_POST['password'], PASSWORD_BCRYPT); // Hash the password
-$confirm_password = htmlspecialchars($_POST['confirm_password']);
 $profile_pic = htmlspecialchars($_POST['profile_pic']); // File name from session
+$confirm_password = htmlspecialchars($_POST['confirm_password']);
 
 // Check if email already exists
 $sql = "SELECT * FROM `users` WHERE `email` = :email";
@@ -25,8 +34,8 @@ if ($stmt->rowCount() > 0) {
     // Check if passwords match
     if ($_POST['password'] === $confirm_password) {
         // Insert the user into the database
-        $sql = "INSERT INTO `users` (`firstname`, `lastname`, `gender`, `language`, `email`, `password_hash`, `profile_pic`) 
-                VALUES (:firstname, :lastname, :gender, :language, :email, :password_hash, :profile_pic)";
+        $sql = "INSERT INTO `users` (`firstname`, `lastname`, `gender`, `language`, `email`, `password_hash`, `profile_pic`,`confirm`) 
+                VALUES (:firstname, :lastname, :gender, :language, :email, :password_hash,:profile_pic,:confirm)";
         $stmt = $con->prepare($sql);
         $stmt->bindParam(':firstname', $firstname);
         $stmt->bindParam(':lastname', $lastname);
@@ -35,7 +44,7 @@ if ($stmt->rowCount() > 0) {
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':password_hash', $password);
         $stmt->bindParam(':profile_pic', $profile_pic);
-
+        $stmt->bindParam(':confirm', $confirm_password);
         if ($stmt->execute()) {
             // Registration successful
             $user = 2;
@@ -48,7 +57,6 @@ if ($stmt->rowCount() > 0) {
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -62,8 +70,7 @@ if ($stmt->rowCount() > 0) {
             margin: 0;
             padding: 0;
             height: 100vh;
-            background: linear-gradient(135deg, #ff7eb3, #ff758c);
-            color: #fff;
+            background: #f2f2f2;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -75,58 +82,55 @@ if ($stmt->rowCount() > 0) {
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.6);
+            background-color: rgba(0, 0, 0, 0.3);
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
         .alert-container {
-            background-color: #333;
+            background-color: #fff;
             padding: 20px 30px;
             border-radius: 8px;
             text-align: center;
             max-width: 400px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .alert-container h1 {
-            font-size: 24px;
+            font-size: 20px;
             margin-bottom: 10px;
         }
 
         .alert-container p {
-            font-size: 16px;
+            font-size: 14px;
             margin-bottom: 20px;
         }
 
         .alert-container.success {
-            background-color: #28a745;
+            border-left: 4px solid #28a745;
         }
 
         .alert-container.error {
-            background-color: #dc3545;
+            border-left: 4px solid #dc3545;
         }
 
         .alert-container.warning {
-            background-color: #ffc107;
-            color: #000;
+            border-left: 4px solid #ffc107;
         }
 
         .alert-container button {
-            background-color: #fff;
-            color: #333;
+            background-color: #007bff;
+            color: #fff;
             border: none;
-            padding: 10px 20px;
+            padding: 8px 16px;
             font-size: 14px;
-            font-weight: bold;
             cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.2s ease;
+            border-radius: 4px;
         }
 
         .alert-container button:hover {
-            background-color: #f8f9fa;
+            background-color: #0056b3;
         }
     </style>
 </head>
@@ -149,13 +153,13 @@ if ($stmt->rowCount() > 0) {
             </h1>
             <p>
                 <?php
-                if ($user == 1) echo "The email address you entered is already registered.";
+                if ($user == 1) echo "The email  already registered please try again.";
                 elseif ($user == 2) echo "Registration successful!";
                 elseif ($user == 3) echo "Something went wrong. Please try again.";
                 elseif ($user == 4) echo "Passwords do not match. Please try again.";
                 ?>
             </p>
-            <button onclick="window.location.href='page1.php'">Close</button>
+            <button onclick="window.location.href='page2.php'">Close</button>
         </div>
     </div>
 </body>

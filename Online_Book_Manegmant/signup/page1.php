@@ -9,19 +9,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $_SESSION['gender'] = htmlspecialchars($_POST['gender']);
   $_SESSION['language'] = isset($_POST['language']) ? $_POST['language'] : [];
 
-  // Check if the name is already registered
-  $sql = "SELECT * FROM users WHERE `lastname`=:lastname and `profile_pic`=:profile_pic";
-  $stmt = $con->prepare($sql);
-  $stmt->bindParam(':lastname', $_SESSION['lastname']);
-  $stmt->bindParam(':profile_pic', $_SESSION['profile_pic']);
-  $stmt->execute();
-  $count = $stmt->rowCount();
-
-  if ($count > 0) {
-    $_SESSION['error_message'] = "The first name you entered is already registered.";
-    header("Location: page1.php");
-    exit;
-  }
 
   // Validate file input name
   if (!isset($_FILES['profile_pic'])) {
@@ -76,6 +63,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sign-Up Page</title>
   <link rel="stylesheet" href="page1.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script>
+    // jquery handel this event
+    $(document).ready(function() {
+      $("#others").on("change", function() {
+        if ($(this).is(":checked")) {
+          $("#shows").show(); // Show the input box when checked
+        } else {
+          $("#shows").hide(); // Hide the input box when unchecked
+        }
+      });
+    });
+  </script>
 </head>
 
 <body>
@@ -141,9 +141,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       </div>
 
       <div class="language-option">
-        <input type="checkbox" id="other" name="language[]" value="Other">
-        <label for="other">Other</label>
+        <input type="checkbox" id="others" name="" value="Other">
+        <label for="others" id="other">Other</label>
       </div>
+      <div id="shows" style="display: none;">
+        <input type="text" name="language[]" placeholder="Enter other language">
+      </div>
+
+
 
       <!-- File Upload -->
       <label for="profile_pic">Upload Profile Picture:</label>

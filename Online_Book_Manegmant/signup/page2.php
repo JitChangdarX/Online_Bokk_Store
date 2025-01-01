@@ -29,7 +29,7 @@ $profile_pic = $_SESSION['profile_pic'];
                 y.type = 'text';
             } else {
                 y.type = 'password';
-        }
+            }
         }
     </script>
 </head>
@@ -61,8 +61,9 @@ $profile_pic = $_SESSION['profile_pic'];
             <label for="confirm_password">Confirm Password:</label>
             <input type="password" id="confirm_password" name="confirm_password" required>
             <br>
-            <input type="checkbox" id="terms" name="terms" onclick="showPassword()" required> I agree to the terms and conditions
-            <button type="button" id="submit" name="submit" class="btn btn-outline-primary">Submit</button>
+            <input type="checkbox" id="terms" name="terms" onclick="showPassword()"> I agree to the terms and conditions
+            <br>
+            <button type="button" id="submit">Submit</button>
         </form>
         <div id="message"></div>
     </div>
@@ -80,6 +81,16 @@ $profile_pic = $_SESSION['profile_pic'];
                 formData.append("gender", "<?php echo $gender; ?>");
                 formData.append("language", "<?php echo $language; ?>");
                 formData.append("profile_pic", "<?php echo $profile_pic; ?>"); // Send the file name, not the actual file
+
+                //al data console.log print
+                console.log("Email: " + $("#email").val());
+                console.log("Password: " + $("#password").val());
+                console.log("Confirm Password: " + $("#confirm_password").val());
+                console.log("Firstname: " + "<?php echo $firstname; ?>");
+                console.log("Lastname: " + "<?php echo $lastname; ?>");
+                console.log("Gender: " + "<?php echo $gender; ?>");
+                console.log("Language: " + "<?php echo $language; ?>");
+                console.log("Profile Pic: " + "<?php echo $profile_pic; ?>");
 
                 // Send data via AJAX
                 $.ajax({
