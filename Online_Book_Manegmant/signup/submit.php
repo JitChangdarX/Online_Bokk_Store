@@ -48,6 +48,7 @@ if ($stmt->rowCount() > 0) {
         if ($stmt->execute()) {
             // Registration successful
             $user = 2;
+            header("Location: /body/page1.php"); // Redirect to body page
         } else {
             // Error inserting data
             $user = 3;

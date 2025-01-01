@@ -64,6 +64,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <title>Sign-Up Page</title>
   <link rel="stylesheet" href="page1.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
   <script>
     // jquery handel this event
     $(document).ready(function() {
@@ -73,6 +77,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         } else {
           $("#shows").hide(); // Hide the input box when unchecked
         }
+      });
+    });
+    $(function() {
+      var availableTags = [
+        "Mandarin Chinese",
+        "Spanish",
+        "French",
+        "Arabic (standard)",
+        "Bengali",
+        "Portuguese",
+        "Russian",
+        "Urdu",
+        "German",
+        "Hindi",
+        "Italian",
+        "Japanese",
+        "Korean",
+        "Polish",
+        "Swahili",
+        "Ukrainian",
+        "Vietnamese",
+        "Scheme"
+      ];
+      $("#tags").autocomplete({
+        source: availableTags
       });
     });
   </script>
@@ -144,8 +173,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <input type="checkbox" id="others" name="" value="Other">
         <label for="others" id="other">Other</label>
       </div>
-      <div id="shows" style="display: none;">
-        <input type="text" name="language[]" placeholder="Enter other language">
+      <div id="shows" style="display: none;" class="ui-widget">
+        <label for="tags">Tags: </label>
+        <input type="text" id="tags" name="language[]" placeholder="Enter other language">
       </div>
 
 

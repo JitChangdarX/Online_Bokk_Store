@@ -54,6 +54,8 @@
         <div id="accordion">
 
             <div class="group">
+                <h1>Welcome to Your Ultimate Book Management and Shopping Experience</h1>
+                <p class="description">Your one-stop platform to organize, track, and shop for books that you love.</p>
                 <h3>Section 1</h3>
                 <div>
                     <p>Welcome to our Online Book Management Store, where you can easily manage your growing collection of books. Our platform is designed with simplicity and efficiency in mind, allowing you to organize and track your books effortlessly. From classic novels to contemporary bestsellers, our system helps you keep everything in one place.</p>

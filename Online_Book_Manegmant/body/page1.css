@@ -85,7 +85,7 @@ header nav ul li a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 50vh;
 
 }
 
@@ -245,6 +245,7 @@ footer {
         font-size: 1.2em;
     }
 }
+
 #accordion {
     width: 80%;
     margin: 20px auto;
@@ -252,7 +253,41 @@ footer {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    color: #333;
+    position: relative;
+    z-index: 1;
 }
+
 p {
     color: #16C47F;
+}
+
+.group {
+    display: flex;
+    flex-direction: column;
+}
+
+#accordion ul {
+    padding-left: 20px;
+}
+
+#accordion ul li {
+    margin-bottom: 8px;
+    color: #333;
+    font-size: 1em;
+}
+
+.group h1 {
+
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.group .description {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    text-align: center;
 }
