@@ -1,17 +1,18 @@
 <?php
 session_start();
-$user = 0;
 include 'conection.php';
 
-$firstname = $_POST['firstname'];
-$lastname = $_POST['lastname'];
-$gender = $_POST['gender'];
-$language = $_POST['language']; // Comma-separated string
-$email = $_POST['email'];
+// Retrieve form data
+$firstname = htmlspecialchars($_POST['firstname']);
+$lastname = htmlspecialchars($_POST['lastname']);
+$gender = htmlspecialchars($_POST['gender']);
+$language = htmlspecialchars(implode(", ", $_POST['language'])); // Convert array to a comma-separated string
+$email = htmlspecialchars($_POST['email']);
 $password = password_hash($_POST['password'], PASSWORD_BCRYPT); // Hash the password
-$confirm_password = $_POST['confirm_password'];
-$profile_pic = $_POST['profile_pic']; // File name from session
+$confirm_password = htmlspecialchars($_POST['confirm_password']);
+$profile_pic = htmlspecialchars($_POST['profile_pic']); // File name from session
 
+// Check if email already exists
 $sql = "SELECT * FROM `users` WHERE `email` = :email";
 $stmt = $con->prepare($sql);
 $stmt->bindParam(':email', $email);
@@ -21,36 +22,40 @@ if ($stmt->rowCount() > 0) {
     // Email already exists
     $user = 1;
 } else {
+    // Check if passwords match
     if ($_POST['password'] === $confirm_password) {
-        $sql = "INSERT INTO `users` (`firstname`, `lastname`, `gender`, `language`, `email`, `password_hash`, `profile_pic`, `confirm`) 
-                VALUES (:firstname, :lastname, :gender, :lan, :email, :password_hash, :profile_pic, :confirm)";
+        // Insert the user into the database
+        $sql = "INSERT INTO `users` (`firstname`, `lastname`, `gender`, `language`, `email`, `password_hash`, `profile_pic`) 
+                VALUES (:firstname, :lastname, :gender, :language, :email, :password_hash, :profile_pic)";
         $stmt = $con->prepare($sql);
         $stmt->bindParam(':firstname', $firstname);
         $stmt->bindParam(':lastname', $lastname);
         $stmt->bindParam(':gender', $gender);
-        $stmt->bindParam(':lan', $language);
+        $stmt->bindParam(':language', $language);
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':password_hash', $password);
-        $stmt->bindParam(':confirm', $confirm_password);
         $stmt->bindParam(':profile_pic', $profile_pic);
 
         if ($stmt->execute()) {
             // Registration successful
-            echo "Registration successful!";
-            exit;
+            $user = 2;
         } else {
-            echo "Error";
+            // Error inserting data
+            $user = 3;
         }
+    } else {
+        $user = 4; // Passwords do not match
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Error Message</title>
+    <title>Status Message</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -59,6 +64,9 @@ if ($stmt->rowCount() > 0) {
             height: 100vh;
             background: linear-gradient(135deg, #ff7eb3, #ff758c);
             color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .overlay {
@@ -71,39 +79,43 @@ if ($stmt->rowCount() > 0) {
             display: flex;
             align-items: center;
             justify-content: center;
-            visibility: hidden;
-            opacity: 0;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-        }
-
-        .overlay.show {
-            visibility: visible;
-            opacity: 1;
         }
 
         .alert-container {
-            background-color: #ff4757;
+            background-color: #333;
             padding: 20px 30px;
             border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
             text-align: center;
             max-width: 400px;
-            animation: slideIn 0.5s ease-out;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         .alert-container h1 {
             font-size: 24px;
-            margin: 0 0 10px;
+            margin-bottom: 10px;
         }
 
         .alert-container p {
             font-size: 16px;
-            margin: 0 0 20px;
+            margin-bottom: 20px;
+        }
+
+        .alert-container.success {
+            background-color: #28a745;
+        }
+
+        .alert-container.error {
+            background-color: #dc3545;
+        }
+
+        .alert-container.warning {
+            background-color: #ffc107;
+            color: #000;
         }
 
         .alert-container button {
             background-color: #fff;
-            color: #ff4757;
+            color: #333;
             border: none;
             padding: 10px 20px;
             font-size: 14px;
@@ -114,39 +126,38 @@ if ($stmt->rowCount() > 0) {
         }
 
         .alert-container button:hover {
-            background-color: #f8d7da;
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateY(-50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
+            background-color: #f8f9fa;
         }
     </style>
 </head>
 
 <body>
-    <?php if ($user == 1) { ?>
-        <div class="overlay show">
-            <div class="alert-container">
-                <h1>Oops!</h1>
-                <p>The email address you entered is already registered.</p>
-                <button onclick="closeAlert()">Close</button>
-            </div>
+    <div class="overlay">
+        <div class="alert-container 
+        <?php
+        if ($user == 1) echo 'error';
+        elseif ($user == 2) echo 'success';
+        elseif ($user == 3) echo 'error';
+        elseif ($user == 4) echo 'warning'; ?>">
+            <h1>
+                <?php
+                if ($user == 1) echo "Oops!";
+                elseif ($user == 2) echo "Success!";
+                elseif ($user == 3) echo "Error!";
+                elseif ($user == 4) echo "Warning!";
+                ?>
+            </h1>
+            <p>
+                <?php
+                if ($user == 1) echo "The email address you entered is already registered.";
+                elseif ($user == 2) echo "Registration successful!";
+                elseif ($user == 3) echo "Something went wrong. Please try again.";
+                elseif ($user == 4) echo "Passwords do not match. Please try again.";
+                ?>
+            </p>
+            <button onclick="window.location.href='page1.php'">Close</button>
         </div>
-    <?php } ?>
-
-    <script>
-        function closeAlert() {
-            const overlay = document.querySelector('.overlay');
-            overlay.classList.remove('show');
-        }
-    </script>
+    </div>
 </body>
 
 </html>

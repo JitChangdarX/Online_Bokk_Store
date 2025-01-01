@@ -1,5 +1,6 @@
 <?php
 session_start();
+include 'conection.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   // Validate input fields
@@ -7,6 +8,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $_SESSION['lastname'] = htmlspecialchars($_POST['lastname']);
   $_SESSION['gender'] = htmlspecialchars($_POST['gender']);
   $_SESSION['language'] = isset($_POST['language']) ? $_POST['language'] : [];
+
+  // Check if the name is already registered
+  $sql = "SELECT * FROM users WHERE `lastname`=:lastname and `profile_pic`=:profile_pic";
+  $stmt = $con->prepare($sql);
+  $stmt->bindParam(':lastname', $_SESSION['lastname']);
+  $stmt->bindParam(':profile_pic', $_SESSION['profile_pic']);
+  $stmt->execute();
+  $count = $stmt->rowCount();
+
+  if ($count > 0) {
+    $_SESSION['error_message'] = "The first name you entered is already registered.";
+    header("Location: page1.php");
+    exit;
+  }
 
   // Validate file input name
   if (!isset($_FILES['profile_pic'])) {
@@ -24,11 +39,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   // Validate file type
   $allowedTypes = ['image/jpg', 'image/jpeg', 'image/png', 'image/gif', 'application/pdf'];
   if (!in_array($file['type'], $allowedTypes)) {
-    ?>
-    <script>
-      alert("Invalid file type. Only JPG, JPEG, PNG, GIF, and PDF files are allowed.");
-    </script>
-    <?php
+    $_SESSION['error_message'] = "Invalid file type. Only JPG, JPEG, PNG, GIF, and PDF files are allowed.";
+    header("Location: page1.php");
     exit;
   }
 
@@ -58,6 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -79,28 +92,39 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   <div class="container">
     <h2>Sign Up</h2>
+
+    <!-- Display Error Message -->
+    <?php
+    if (isset($_SESSION['error_message'])) {
+      echo "<div class='error-message'>" . $_SESSION['error_message'] . "</div>";
+      unset($_SESSION['error_message']); // Clear the message after displaying
+    }
+    ?>
+
     <form action="" method="post" enctype="multipart/form-data">
       <label for="firstname">First Name:</label>
       <input type="text" id="firstname" name="firstname" required>
+      <p>Enter your first name</p>
       <br><br>
 
       <label for="lastname">Last Name:</label>
       <input type="text" id="lastname" name="lastname" required>
+      <p>Enter your last name</p>
       <br><br>
 
       <label for="gender">Gender:</label>
       <select id="gender" name="gender" required>
-        <option value="">Selact</option>
+        <option value="">Select</option>
         <option value="male">Male</option>
         <option value="female">Female</option>
         <option value="other">Other</option>
         <option value="prefer-not-to-say">Prefer Not to Say</option>
       </select>
+      <p>Select your gender</p>
       <br><br>
 
       <!-- Language -->
       <label for="language">Languages Known:</label><br>
-
       <div class="language-option">
         <input type="checkbox" id="english" name="language[]" value="English">
         <label for="english">English</label>
@@ -124,6 +148,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       <!-- File Upload -->
       <label for="profile_pic">Upload Profile Picture:</label>
       <input type="file" id="profile_pic" name="profile_pic" accept="image/*" required>
+      <p class="text-center text-muted">
+        Please Ensure all required fields are filled out accurately.
+        Upload your photo in a jpg format as supporting documentation.
+      </p>
       <br><br>
 
       <!-- Submit Button -->
