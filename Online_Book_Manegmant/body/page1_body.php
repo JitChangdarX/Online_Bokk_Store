@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Body</title>
-    <link rel="stylesheet" href="/body/page1.css">
+    <link rel="stylesheet" href="">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="date.css">
@@ -42,7 +42,7 @@
             <ul>
                 <li><a href="/home/index.php">Home</a></li>
                 <li><a href="categories.html">Categories</a></li>
-                <li><a href="/signup/page1.php">Sign Up</a></li>
+                <li><a href="">Sign Up</a></li>
                 <li><a href="login.html">Login</a></li>
                 <li><a href="/contact/contactus.php">Contact Us</a></li>
             </ul>
