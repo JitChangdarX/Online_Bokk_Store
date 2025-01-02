@@ -6,6 +6,7 @@ $lastname = $_SESSION['lastname'];
 $gender = $_SESSION['gender'];
 $language = implode(", ", $_SESSION['language']);
 $profile_pic = $_SESSION['profile_pic'];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,8 +42,8 @@ $profile_pic = $_SESSION['profile_pic'];
             <a href="/" style="color: white; font-size: 24px; font-weight: bold; text-decoration: none;">Bookstore</a>
         </div>
         <ul>
-            <li><a href="/home/index.php">Home</a></li>
-            <li><a href="/login">Login</a></li>
+            <li><a href="/Online_Book_Manegmant/home/index.php">Home</a></li>
+            <li><a href="/Online_Book_Manegmant/Login/login_page1.php">Login</a></li>
             <li><a href="/help">Help</a></li>
         </ul>
     </nav>
@@ -72,6 +73,7 @@ $profile_pic = $_SESSION['profile_pic'];
         $(document).ready(function() {
             $("#submit").click(function() {
                 // Prepare form data
+
                 const formData = new FormData();
                 formData.append("email", $("#email").val());
                 formData.append("password", $("#password").val());

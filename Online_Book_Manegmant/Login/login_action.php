@@ -4,7 +4,7 @@ session_start();
 include 'conection.php';
 
 $email = htmlspecialchars($_POST['email']); // Keep email sanitized
-$password = $_POST['password']; // Avoid sanitization for passwords
+$password = $_POST['password']; 
 
 if (empty($email) || empty($password)) {
     echo "All fields are required.";

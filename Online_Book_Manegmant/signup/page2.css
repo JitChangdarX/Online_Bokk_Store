@@ -102,3 +102,19 @@ form#signupForm {
     align-items: center;
     justify-content: center;
 }
+#submit {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#submit:hover {
+    background-color: #45a049;
+}
+#submit:active {
+    background-color: #3e8e41;
+    box-shadow: 0 3px #666;
+    transform: translateY(4px);
+}

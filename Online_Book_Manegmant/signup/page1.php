@@ -113,8 +113,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       <a href="/" style="color: white; font-size: 24px; font-weight: bold; text-decoration: none;">Bookstore</a>
     </div>
     <ul>
-      <li><a href="/home/index.php">Home</a></li>
-      <li><a href="/login">Login</a></li>
+      <li><a href="/Online_Book_Manegmant/home/index.php">Home</a></li>
+      <li><a href="/Online_Book_Manegmant//Login/login_page1.php">Login</a></li>
       <li><a href="/help">Help</a></li>
     </ul>
   </nav>

@@ -23,6 +23,7 @@
 
 <body>
     <div class="container">
+        <h2>Login Form</h2>
         <div class="mb-3 mt-5">
             <label for="exampleInputEmail1" class="form-label ">Email address</label>
             <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">

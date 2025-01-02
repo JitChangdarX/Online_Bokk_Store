@@ -20,9 +20,9 @@
                 <option value="">services2</option>
                 <option value="">services3</option>
             </select>
-            <li><a href="/contact/contactus.php">Contact</a></li>
+            <li><a href="/Online_Book_Manegmant/contact/contactus.php">Contact</a></li>
             <li>login</li>
-            <li><a href="/signup/page1.php">signup</a></li>
+            <li><a href="/Online_Book_Manegmant/signup/page1.php">signup</a></li>
         </ul>
     </div>
 
