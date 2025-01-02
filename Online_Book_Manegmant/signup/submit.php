@@ -17,7 +17,7 @@ if (is_array($_SESSION['language'])) {
 }
 // Convert array to a comma-separated string
 $email = htmlspecialchars($_POST['email']);
-$password = password_hash($_POST['password'], PASSWORD_BCRYPT); // Hash the password
+$password = $_POST['password']; // Remove sanitization for password
 $profile_pic = htmlspecialchars($_POST['profile_pic']); // File name from session
 $confirm_password = htmlspecialchars($_POST['confirm_password']);
 
@@ -33,6 +33,7 @@ if ($stmt->rowCount() > 0) {
 } else {
     // Check if passwords match
     if ($_POST['password'] === $confirm_password) {
+        $hashed_password = password_hash($password, PASSWORD_BCRYPT);
         // Insert the user into the database
         $sql = "INSERT INTO users (firstname, lastname, gender, language, email, password_hash, profile_pic,confirm) 
                 VALUES (:firstname, :lastname, :gender, :language, :email, :password_hash,:profile_pic,:confirm)";
@@ -42,7 +43,7 @@ if ($stmt->rowCount() > 0) {
         $stmt->bindParam(':gender', $gender);
         $stmt->bindParam(':language', $language);
         $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':password_hash', $password);
+        $stmt->bindParam(':password_hash', $hashed_password);
         $stmt->bindParam(':profile_pic', $profile_pic);
         $stmt->bindParam(':confirm', $confirm_password);
         if ($stmt->execute()) {

@@ -1,0 +1,24 @@
+body
+{
+    background-image: url('img\ .avif');
+}
+.container
+{
+    background-color: rgb(255, 255, 255);
+    height: auto;
+    max-width: 40rem;
+    width: 90%;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 10;
+    opacity: 0.9;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
+    margin-top: 10rem;
+}

@@ -132,12 +132,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     <form action="" method="post" enctype="multipart/form-data">
       <label for="firstname">First Name:</label>
-      <input type="text" id="firstname" name="firstname" required>
+      <input type="text" id="firstname" maxlength="10" name="firstname" required>
       <p>Enter your first name</p>
       <br><br>
 
       <label for="lastname">Last Name:</label>
-      <input type="text" id="lastname" name="lastname" required>
+      <input type="text" id="lastname" maxlength="10" name="lastname" required>
       <p>Enter your last name</p>
       <br><br>
 
