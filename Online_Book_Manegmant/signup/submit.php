@@ -22,7 +22,7 @@ $profile_pic = htmlspecialchars($_POST['profile_pic']); // File name from sessio
 $confirm_password = htmlspecialchars($_POST['confirm_password']);
 
 // Check if email already exists
-$sql = "SELECT * FROM `users` WHERE `email` = :email";
+$sql = "SELECT * FROM users WHERE email = :email";
 $stmt = $con->prepare($sql);
 $stmt->bindParam(':email', $email);
 $stmt->execute();
@@ -34,7 +34,7 @@ if ($stmt->rowCount() > 0) {
     // Check if passwords match
     if ($_POST['password'] === $confirm_password) {
         // Insert the user into the database
-        $sql = "INSERT INTO `users` (`firstname`, `lastname`, `gender`, `language`, `email`, `password_hash`, `profile_pic`,`confirm`) 
+        $sql = "INSERT INTO users (firstname, lastname, gender, language, email, password_hash, profile_pic,confirm) 
                 VALUES (:firstname, :lastname, :gender, :language, :email, :password_hash,:profile_pic,:confirm)";
         $stmt = $con->prepare($sql);
         $stmt->bindParam(':firstname', $firstname);
@@ -48,7 +48,6 @@ if ($stmt->rowCount() > 0) {
         if ($stmt->execute()) {
             // Registration successful
             $user = 2;
-            header("Location: /body/page1.php"); // Redirect to body page
         } else {
             // Error inserting data
             $user = 3;
@@ -160,7 +159,7 @@ if ($stmt->rowCount() > 0) {
                 elseif ($user == 4) echo "Passwords do not match. Please try again.";
                 ?>
             </p>
-            <button onclick="window.location.href='page2.php'">Close</button>
+            <button onclick="window.location.href=''">Close</button>
         </div>
     </div>
 </body>

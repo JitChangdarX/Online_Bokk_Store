@@ -82,7 +82,7 @@ $profile_pic = $_SESSION['profile_pic'];
                 formData.append("language", "<?php echo $language; ?>");
                 formData.append("profile_pic", "<?php echo $profile_pic; ?>"); // Send the file name, not the actual file
 
-                //al data console.log print
+                // Debug form data in console
                 console.log("Email: " + $("#email").val());
                 console.log("Password: " + $("#password").val());
                 console.log("Confirm Password: " + $("#confirm_password").val());
@@ -97,13 +97,13 @@ $profile_pic = $_SESSION['profile_pic'];
                     url: "submit.php",
                     type: "POST",
                     data: formData,
-                    contentType: false,
-                    processData: false,
+                    contentType: false, // Prevent default content type
+                    processData: false, // Prevent default processing
                     success: function(response) {
                         $("#message").html(response);
                     },
-                    error: function() {
-                        $("#message").html("<p style='color:red;'>An error occurred. Please try again.</p>");
+                    error: function(xhr, status, error) {
+                        $("#message").html("<p style='color:red;'>An error occurred: " + error + "</p>");
                     }
                 });
             });
