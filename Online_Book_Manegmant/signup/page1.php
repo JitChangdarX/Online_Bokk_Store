@@ -191,6 +191,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
       <!-- Submit Button -->
       <button type="submit" class="btn btn-outline-primary">Next</button>
+      <p>Already have an account? <a href="/Online_Book_Manegmant//Login/login_page1.php">Login</a></p>
     </form>
   </div>
 </body>

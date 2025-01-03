@@ -40,6 +40,7 @@
             </div>
         </center>
         <center><button type="submit" class="btn btn-primary" id="btn">Submit</button></center>
+        <p>Don't have an account? <a href="/Online_Book_Manegmant//signup/page1.php">Sign Up</a></p>
     </div>
     <div id="div"></div>
     <script type="text/javascript">

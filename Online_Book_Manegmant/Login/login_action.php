@@ -1,10 +1,18 @@
 
 <?php
+
+// ini_set('display_errors', 0);
+// ini_set('display_startup_errors', 0);
+// error_reporting(0);   error will be not show;
+// ini_set('log_errors', 1);
+// ini_set('error_log', '/path/to/error.log');
+
+
 session_start();
 include 'conection.php';
 
 $email = htmlspecialchars($_POST['email']); // Keep email sanitized
-$password = $_POST['password']; 
+$password = $_POST['password'];
 
 if (empty($email) || empty($password)) {
     echo "All fields are required.";
@@ -40,5 +48,7 @@ try {
     }
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
+    //error_log("Database error: " . $e->getMessage()); // Log error details
+    //echo "An error occurred. Please try again later.";
 }
 ?>
