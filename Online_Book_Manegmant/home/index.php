@@ -15,7 +15,7 @@
             <li>home</li>
             <li>about</li>
             <select name="" id="mydropdown">
-                <option value="">services</option>
+                <option value="services">services</option>
                 <option value="">services1</option>
                 <option value="">services2</option>
                 <option value="">services3</option>

@@ -1,8 +1,22 @@
 <?php
 session_start();
 include 'conection.php';
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+  $fields = [
+    'firstname' => 'Enter your first name',
+    'lastname' => 'Enter your last name',
+    'gender' => 'Select your gender',
+    'language' => 'Select your language'
+  ];
+
+  // Validate each field
+  foreach ($fields as $field => $errorMessage) {
+    if (empty($_POST[$field])) {
+      echo "<p>{$errorMessage}</p>";
+
+      // exit;
+    }
+  }
   // Validate input fields
   $_SESSION['firstname'] = htmlspecialchars($_POST['firstname']);
   $_SESSION['lastname'] = htmlspecialchars($_POST['lastname']);
@@ -19,12 +33,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   // Check if file is uploaded
   $file = $_FILES['profile_pic'];
   if (empty($file['name'])) {
-    echo "Please upload a file.";
+    echo "<p style='color:red'>Please upload a file.</p>";
     exit;
   }
 
   // Validate file type
-  $allowedTypes = ['image/jpg', 'image/jpeg', 'image/png', 'image/gif', 'application/pdf'];
+  $allowedTypes = ['image/jpg', 'image/jpeg', 'image/png', 'image/gif', 'image/avif'];
   if (!in_array($file['type'], $allowedTypes)) {
     $_SESSION['error_message'] = "Invalid file type. Only JPG, JPEG, PNG, GIF, and PDF files are allowed.";
     header("Location: page1.php");
@@ -132,17 +146,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     <form action="" method="post" enctype="multipart/form-data">
       <label for="firstname">First Name:</label>
-      <input type="text" id="firstname" maxlength="10" name="firstname" required>
+      <input type="text" id="firstname" maxlength="20" name="firstname">
       <p>Enter your first name</p>
       <br><br>
 
       <label for="lastname">Last Name:</label>
-      <input type="text" id="lastname" maxlength="10" name="lastname" required>
+      <input type="text" id="lastname" maxlength="18" name="lastname">
       <p>Enter your last name</p>
       <br><br>
 
       <label for="gender">Gender:</label>
-      <select id="gender" name="gender" required>
+      <select id="gender" name="gender">
         <option value="">Select</option>
         <option value="male">Male</option>
         <option value="female">Female</option>
@@ -182,7 +196,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
       <!-- File Upload -->
       <label for="profile_pic">Upload Profile Picture:</label>
-      <input type="file" id="profile_pic" name="profile_pic" accept="image/*" required>
+      <input type="file" id="profile_pic" name="profile_pic" accept="image/*">
       <p class="text-center text-muted">
         Please Ensure all required fields are filled out accurately.
         Upload your photo in a jpg format as supporting documentation.
@@ -191,7 +205,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
       <!-- Submit Button -->
       <button type="submit" class="btn btn-outline-primary">Next</button>
-      <p>Already have an account? <a href="/Online_Book_Manegmant//Login/login_page1.php">Login</a></p>
+      <pre>Already have an account? <a href="/Online_Book_Manegmant//Login/login_page1.php">Login</a></pre>
     </form>
   </div>
 </body>
