@@ -41,7 +41,7 @@
         <nav>
             <ul>
                 <li><a href="/home/index.php">Home</a></li>
-                <li><a href="categories.html">Category</a></li>
+                <li><a href="/Category/page1.php">Category</a></li>
                 <li><a href="/signup/page1.php">Sign Up</a></li>
                 <li><a href="/Login/login_page1.php">Login</a></li>
                 <li><a href="/contact/contactus.php">Contact Us</a></li>
