@@ -1,0 +1,65 @@
+body {
+    background-image: url(https://img.freepik.com/free-photo/top-view-books-with-copy-space_23-2148827187.jpg?t=st=1736013121~exp=1736016721~hmac=9f6da41615d3ae0d5c48ef97d13b621731856205428ed65d45536414e14fd80e&w=1060);
+}
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    flex-wrap: wrap;
+    align-content: center;
+}
+.categories ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+ul li {
+   display: block;
+}
+.categories ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+.categories li
+{
+    border: 1px solid #ddd; /* Adds border */
+    padding: 10px 20px; /* Adds equal spacing */
+    border-radius: 5px; /* Rounds the corners */
+    white-space: nowrap;
+}
+.categories ul li {
+    list-style: none;
+    margin: 0 10px;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+   
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+a:hover {
+    background-color: white;
+    color: #333;
+    
+}
+.categories ul li a:hover {
+    background-color: white;
+    color: #333;
+}
