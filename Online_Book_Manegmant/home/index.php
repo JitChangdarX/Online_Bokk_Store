@@ -12,7 +12,7 @@
     <!-- naviagtion bar -->
     <div id="header">
         <ul>
-            <li>home</li>
+            <li><a href="/home/index.php">Home</a></li>
             <li>about</li>
             <select name="" id="mydropdown">
                 <option value="services">services</option>
@@ -20,9 +20,9 @@
                 <option value="">services2</option>
                 <option value="">services3</option>
             </select>
-            <li><a href="/Online_Book_Manegmant/contact/contactus.php">Contact</a></li>
-            <li>login</li>
-            <li><a href="/Online_Book_Manegmant/signup/page1.php">signup</a></li>
+            <li><a href="/contact/contactus.php">Contact</a></li>
+            <li><a href="/Login/login_page1.php">login</a></li>
+            <li><a href="/signup/page1.php">signup</a></li>
             <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         </ul>
     </div>
