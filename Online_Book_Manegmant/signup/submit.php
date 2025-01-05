@@ -18,8 +18,17 @@ if (is_array($_SESSION['language'])) {
 // Convert array to a comma-separated string
 $email = htmlspecialchars($_POST['email']);
 $password = $_POST['password']; // Remove sanitization for password
-$profile_pic = htmlspecialchars($_POST['profile_pic']); // File name from session
 $confirm_password = htmlspecialchars($_POST['confirm_password']);
+$profile_pic = htmlspecialchars($_POST['profile_pic']); // File name from session
+if (
+    !isset($email, $password, $confirm_password) ||
+    empty(trim($email)) ||
+    empty(trim($password)) ||
+    empty(trim($confirm_password))
+) {
+    echo "<p style='color:red;'>Please fill in all fields.</p>";
+    exit();
+}
 
 // Check if email already exists
 $sql = "SELECT * FROM users WHERE email = :email";
@@ -49,7 +58,6 @@ if ($stmt->rowCount() > 0) {
         if ($stmt->execute()) {
             // Registration successful
             $user = 2;
-            
         } else {
             // Error inserting data
             $user = 3;
@@ -141,6 +149,7 @@ if ($stmt->rowCount() > 0) {
     <div class="overlay">
         <div class="alert-container 
         <?php
+        if ($user == 0) echo 'please wait';
         if ($user == 1) echo 'error';
         elseif ($user == 2) echo 'success';
         elseif ($user == 3) echo 'error';
