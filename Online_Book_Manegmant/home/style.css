@@ -123,17 +123,33 @@ li:hover {
 a {
     text-decoration: none;
     color: white;
+    transition: all 0.3s ease;
 
 }
 
 a:hover {
     color: rgb(0, 0, 0);
 }
+
 .mySlides {
     height: 25rem;
 }
+
 .w3-content {
     position: relative;
     margin: auto;
     margin-top: 6rem;
+}
+
+/* Example */
+ul li {
+    list-style: none;
+    /* Remove bullet points */
+    padding: 10px;
+    font-size: 16px;
+}
+
+select#mydropdown option {
+    font-size: 14px;
+    color: black;
 }

@@ -49,6 +49,7 @@ if ($stmt->rowCount() > 0) {
         if ($stmt->execute()) {
             // Registration successful
             $user = 2;
+            
         } else {
             // Error inserting data
             $user = 3;
