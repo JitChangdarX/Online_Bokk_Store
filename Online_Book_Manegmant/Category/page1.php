@@ -21,6 +21,7 @@
 <body>
     <!-- Sidebar -->
     <div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
+
         <button onclick="w3_close()" class="w3-bar-item w3-large">Close &times;</button>
         <a href="#" class="w3-bar-item w3-button">Fiction</a>
         <a href="#" class="w3-bar-item w3-button">Non-Fiction</a>
@@ -44,29 +45,21 @@
         <button class="w3-button w3-teal w3-xlarge" onclick="w3_open()">☰</button>
         <div class="w3-container">
             <h1>My Page</h1>
+            <div class="footer-section">
+                <ul>
+                    <li><a class="active" href="/home/index.php">Home</a></li>
+                    <li><a class="active" href="/About/page1.php">About Us</a></li>
+                    <li><a class="active" href="#">Editorial</a></li>
+                    <li><a class="active" href="#">Blog</a></li>
+                    <li><a class="active" href="/contact/contactus.php">Contact Us</a></li>
+                    <li><a class="active" href="#">Privacy Policy</a></li>
+
+                </ul>
+
+            </div>
         </div>
     </div>
 
-    <!-- Navigation -->
-    <nav>
-        <div class="categories">
-            <ul>
-                <li><a href="#">Children</a></li>
-                <li><a href="#">Romance</a></li>
-                <li><a href="#">Mystery</a></li>
-                <li><a href="#">Horror</a></li>
-                <li><a href="#">Thriller</a></li>
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Adventure</a></li>
-                <li><a href="#">Comedy</a></li>
-                <li><a href="#">Drama</a></li>
-                <li><a href="#">Fantasy</a></li>
-                <li><a href="#">Historical</a></li>
-                <li><a href="#">Magical Realism</a></li>
-                <li><a href="#">Poetry</a></li>
-            </ul>
-        </div>
-    </nav>
 </body>
 
 </html>
