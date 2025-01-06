@@ -13,7 +13,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   foreach ($fields as $field => $errorMessage) {
     if (empty($_POST[$field])) {
       echo "<p>{$errorMessage}</p>";
-
+?>
+      echo "<script>
+        setTimeout(function() {
+          location.href = "page1.php", 8000
+        });
+      </script>";
+<?php
       // exit;
     }
   }
