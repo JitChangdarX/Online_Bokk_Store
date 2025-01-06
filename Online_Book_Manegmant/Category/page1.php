@@ -25,7 +25,7 @@
         <button onclick="w3_close()" class="w3-bar-item w3-large">Close &times;</button>
         <a href="#" class="w3-bar-item w3-button">Fiction</a>
         <a href="#" class="w3-bar-item w3-button">Non-Fiction</a>
-        <a href="#" class="w3-bar-item w3-button">Children</a>
+        <a href="#" class="w3-bar-item w3-button">Science</a>
         <a href="#" class="w3-bar-item w3-button">Romance</a>
         <a href="#" class="w3-bar-item w3-button">Mystery</a>
         <a href="#" class="w3-bar-item w3-button">Horror</a>

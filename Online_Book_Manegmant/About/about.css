@@ -1,0 +1,29 @@
+body {
+    background-image: url(about.jpeg);
+    background-size: cover;
+}
+
+.datepickers {
+    display: flex;
+    justify-content: flex-end;
+    /* Move the child div to the end */
+    align-items: center;
+    /* Optional: Center the child vertically */
+    /* height: 100vh; */
+    /* Full page height */
+    margin: 0;
+    padding: 0;
+}
+
+.childern_datepicker {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+label,
+input {
+    display: block;
+    margin-bottom: 10px;
+}
