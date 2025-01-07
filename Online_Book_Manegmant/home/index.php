@@ -13,7 +13,7 @@
     <div id="header">
         <ul>
             <li><a href="/home/index.php">Home</a></li>
-            <li>about</li>
+            <li><a href="/About/page1.php">About</a></li>
             <select name="" id="mydropdown">
                 <option value="services">services</option>
                 <option value="">services1</option>
