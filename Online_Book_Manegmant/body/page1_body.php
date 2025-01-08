@@ -1,3 +1,9 @@
+<?php
+session_start();
+$name = $_SESSION['firstname']
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -47,6 +53,9 @@
                 <li><a href="/Logout/logout.php">Logout</a></li>
             </ul>
         </nav>
+        <div class="welcome-message">
+            <p>Welcome back, <?php echo htmlspecialchars($name); ?></p>
+        </div>
     </header>
     <section>
 

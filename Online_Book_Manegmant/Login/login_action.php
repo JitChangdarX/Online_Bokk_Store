@@ -7,6 +7,7 @@
 
 $user = 0;
 $success = 0;
+$found = 0;
 session_start();
 include 'conection.php';
 
@@ -39,7 +40,8 @@ try {
             $user = 1;
         }
     } else {
-        echo "No user found with that email.";
+        // echo "No user found with that email.";
+        $found = 1;
     }
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
@@ -84,7 +86,7 @@ try {
         <?php if ($success == 1):
         ?>
             <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>Holy guacamole!</strong> Login successful!
+                <strong>Welcome back,<?php echo $data['firstname']; ?></strong> Login successful!
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
             <script>
@@ -96,6 +98,16 @@ try {
         <?php
         endif;
         ?>
+        <?php if ($found == 1):
+        ?>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>user not found</strong>please check your email
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php
+        endif;
+        ?>
+
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>

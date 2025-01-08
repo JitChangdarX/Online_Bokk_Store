@@ -291,3 +291,36 @@ p {
     margin-bottom: 20px;
     text-align: center;
 }
+
+/* Styling for the welcome message */
+.welcome-message {
+    background-color: #f0f8ff;
+    /* Light blue background */
+    border: 2px solid #5cb85c;
+    /* Green border */
+    color: #2c3e50;
+    /* Dark text color */
+    font-size: 18px;
+    /* Larger text */
+    font-weight: bold;
+    /* Bold text */
+    text-align: center;
+    /* Center align the text */
+    padding: 15px;
+    /* Add some space around the text */
+    margin: 20px 0;
+    /* Add margin for spacing */
+    border-radius: 10px;
+    /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Add a shadow for depth */
+    transition: background-color 0.3s ease;
+    /* Smooth transition for background color change */
+}
+
+.welcome-message:hover {
+    background-color: #e0f7fa;
+    /* Light cyan color on hover */
+    cursor: pointer;
+    /* Pointer cursor on hover */
+}

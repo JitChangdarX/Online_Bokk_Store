@@ -43,7 +43,7 @@ $profile_pic = $_SESSION['profile_pic'];
         </div>
         <ul>
             <li><a href="/Online_Book_Manegmant/home/index.php">Home</a></li>
-            <li><a href="/Online_Book_Manegmant/Login/login_page1.php">Login</a></li>
+            <li><a href="/Login/login_page1.php">Login</a></li>
             <li><a href="/help">Help</a></li>
         </ul>
     </nav>
