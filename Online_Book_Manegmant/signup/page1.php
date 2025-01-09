@@ -133,9 +133,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       <a href="/" style="color: white; font-size: 24px; font-weight: bold; text-decoration: none;">Bookstore</a>
     </div>
     <ul>
-      <li><a href="/Online_Book_Manegmant/home/index.php">Home</a></li>
-      <li><a href="/Online_Book_Manegmant//Login/login_page1.php">Login</a></li>
-      <li><a href="/help">Help</a></li>
+      <li><a href="/home/index.php">Home</a></li>
+      <li><a href="/Login/login_page1.php">Login</a></li>
+      <li><a href="/Help/page1.php">Help</a></li>
     </ul>
   </nav>
 
@@ -211,7 +211,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
       <!-- Submit Button -->
       <button type="submit" class="btn btn-outline-primary">Next</button>
-      <pre>Already have an account? <a href="/Online_Book_Manegmant//Login/login_page1.php">Login</a></pre>
+      <pre>Already have an account? <a href="/Login/login_page1.php">Login</a></pre>
     </form>
   </div>
 </body>

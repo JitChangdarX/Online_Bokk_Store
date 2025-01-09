@@ -19,7 +19,7 @@ if (is_array($_SESSION['language'])) {
 $email = htmlspecialchars($_POST['email']);
 $password = $_POST['password']; // Remove sanitization for password
 $confirm_password = htmlspecialchars($_POST['confirm_password']);
-$profile_pic = htmlspecialchars($_POST['profile_pic']); // File name from session
+$profile_pic = $_POST['profile_pic']; // File name from session
 if (
     !isset($email, $password, $confirm_password) ||
     empty(trim($email)) ||

@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Index</title>
+    <link rel="icon" type="image/jpg" href="images/81_inr.jpg">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -20,7 +21,7 @@
                 <option value="">services2</option>
                 <option value="">services3</option>
             </select>
-            <li><a href="/contact/contactus.php">Contact</a></li>
+            <li><a href="/">Contact</a></li>
             <li><a href="/Login/login_page1.php">login</a></li>
             <li><a href="/signup/page1.php">signup</a></li>
             <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
