@@ -23,6 +23,23 @@
 </head>
 
 <body>
+    <!-- this is the navbar -->
+    <div id="header">
+        <ul>
+            <li><a href="/home/index.php">Home</a></li>
+            <li><a href="/About/page1.php">About</a></li>
+            <select name="" id="mydropdown">
+                <option value="services">services</option>
+                <option value="">services1</option>
+                <option value="">services2</option>
+                <option value="">services3</option>
+            </select>
+            <li><a href="/contact/contactus.php">Contact</a></li>
+            <li><a href="/signup/page1.php">signup</a></li>
+            <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        </ul>
+    </div>
+
     <div class="container">
         <h2>Login Form</h2>
         <div class="mb-3 mt-5">
@@ -41,7 +58,7 @@
             </div>
         </center>
         <center><button type="submit" class="btn btn-primary" id="btn">Submit</button></center>
-        <p>Don't have an account? <a href="/signup/page1.php">Sign Up</a></p>
+        <p>Don't have an account? <a class="link"  href="/signup/page1.php">Sign Up</a></p>
     </div>
     <div id="div"></div>
     <script type="text/javascript">

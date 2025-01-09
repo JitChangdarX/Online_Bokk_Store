@@ -14,16 +14,16 @@
     <div id="header">
         <ul>
             <li><a href="/home/index.php">Home</a></li>
-            <li><a href="/About/page1.php">About</a></li>
             <select name="" id="mydropdown">
                 <option value="services">services</option>
                 <option value="">services1</option>
                 <option value="">services2</option>
                 <option value="">services3</option>
             </select>
-            <li><a href="/">Contact</a></li>
-            <li><a href="/Login/login_page1.php">login</a></li>
             <li><a href="/signup/page1.php">signup</a></li>
+            <li><a href="/Login/login_page1.php">login</a></li>
+            <li><a href="/contact/contactus.php">Contact</a></li>
+            <li><a href="/Help/page1.php">Help</a></li>
             <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         </ul>
     </div>

@@ -1,9 +1,8 @@
-body
-{
+body {
     background-image: url('img\ .avif');
 }
-.container
-{
+
+.container {
     background-color: rgb(255, 255, 255);
     height: auto;
     max-width: 40rem;
@@ -22,20 +21,19 @@ body
     padding: 10px;
     margin-top: 10rem;
     transition: all 0.3s ease-in-out;
-    transform: scale(0.9); /* Start with a small scale */
-    
+    transform: scale(0.9);
+    /* Start with a small scale */
+
 }
 
-.container h1
-{
+.container h1 {
     text-align: center;
     margin-bottom: 20px;
     color: rgb(0, 0, 0);
     font-size: 30px;
 }
 
-.form-label
-{
+.form-label {
     color: rgb(0, 0, 0);
     font-size: 17px;
     font-weight: bold;
@@ -47,4 +45,50 @@ body
     margin-right: 10px;
     margin-bottom: 10px;
     text-align: center;
+}
+
+ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    margin-top: 10px;
+    justify-content: space-between;
+    /* text-decoration: none; */
+}
+
+ul li {
+    text-decoration: none;
+    color: white;
+    font-size: clamp(0.8rem, 2vw, 1.2rem);
+    cursor: pointer;
+    padding: min(0.5rem, 2vw);
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+a {
+    text-decoration: none;
+}
+
+#mydropdown {
+    background-color: transparent;
+    color: white;
+    border: none;
+    border-top: none;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    cursor: pointer;
+}
+
+#mydropdown option {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    transition: all 0.3s ease;
+}
+.link
+{
+    color: royalblue;
 }
